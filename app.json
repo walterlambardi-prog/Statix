@@ -35,7 +35,7 @@
       "package": "com.walterlambardi.Stratix"
     },
     "web": {
-      "output": "static",
+      "output": "server",
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [

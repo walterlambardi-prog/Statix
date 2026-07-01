@@ -1,5 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
+import { Platform } from 'react-native';
 import { type RssItem, parseRssFeed } from '../lib/rss-parser';
+
+function resolveFeedUrl(url: string): string {
+  if (Platform.OS !== 'web') return url;
+  return `/api/rss?url=${encodeURIComponent(url)}`;
+}
 
 interface UseFeedResult {
   items: RssItem[];
@@ -17,7 +23,7 @@ export function useRssFeed(url: string): UseFeedResult {
   useEffect(() => {
     let cancelled = false;
 
-    fetch(url)
+    fetch(resolveFeedUrl(url))
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.text();

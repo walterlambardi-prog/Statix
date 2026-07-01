@@ -72,7 +72,10 @@
     "eas:update:preview": "eas update --channel preview",
     "eas:update:prod": "eas update --channel production",
     "eas:channel:list": "eas channel:list",
-    "eas:build:list": "eas build:list"
+    "eas:build:list": "eas build:list",
+    "web:export": "expo export -p web",
+    "web:deploy": "expo export -p web && eas deploy --prod",
+    "web:deploy:preview": "expo export -p web && eas deploy"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
