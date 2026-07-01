@@ -3,6 +3,14 @@
     "name": "Stratix",
     "slug": "Stratix",
     "version": "1.0.0",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/bfceb379-be83-4cca-98d8-c913294695b3",
+      "checkAutomatically": "ON_LOAD",
+      "fallbackToCacheTimeout": 0
+    },
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "stratix",
@@ -10,6 +18,11 @@
     "ios": {
       "icon": "./assets/expo.icon",
       "bundleIdentifier": "com.walterlambardi.Stratix"
+    },
+    "androidStatusBar": {
+      "backgroundColor": "#ffffff",
+      "barStyle": "dark-content",
+      "translucent": false
     },
     "android": {
       "adaptiveIcon": {
@@ -27,6 +40,7 @@
     },
     "plugins": [
       "expo-router",
+      "expo-updates",
       [
         "expo-splash-screen",
         {
@@ -39,6 +53,13 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "bfceb379-be83-4cca-98d8-c913294695b3"
+      }
+    },
+    "owner": "walterlambardi"
   }
 }

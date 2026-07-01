@@ -16,6 +16,7 @@
     "expo-status-bar": "~57.0.0",
     "expo-symbols": "~57.0.0",
     "expo-system-ui": "~57.0.0",
+    "expo-updates": "^57.0.5",
     "expo-web-browser": "~57.0.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
@@ -53,7 +54,24 @@
     "prepare": "husky",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx}\"",
-    "type-check": "tsc --noEmit --project tsconfig.json"
+    "type-check": "tsc --noEmit --project tsconfig.json",
+    "eas:build:dev": "eas build --profile development",
+    "eas:build:dev:ios": "eas build --profile development --platform ios",
+    "eas:build:dev:android": "eas build --profile development --platform android",
+    "eas:build:preview": "eas build --profile preview",
+    "eas:build:preview:ios": "eas build --profile preview --platform ios",
+    "eas:build:preview:android": "eas build --profile preview --platform android",
+    "eas:build:prod": "eas build --profile production",
+    "eas:build:ios": "eas build --platform ios --profile production",
+    "eas:build:android": "eas build --platform android --profile production",
+    "eas:submit:ios": "eas submit --platform ios --profile production",
+    "eas:submit:android": "eas submit --platform android --profile production",
+    "eas:update": "eas update",
+    "eas:update:dev": "eas update --channel development",
+    "eas:update:preview": "eas update --channel preview",
+    "eas:update:prod": "eas update --channel production",
+    "eas:channel:list": "eas channel:list",
+    "eas:build:list": "eas build:list"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
