@@ -11,6 +11,10 @@ export default function TabsLayout() {
         <NativeTabs.Trigger.Icon sf="gear" md="settings" />
         <NativeTabs.Trigger.Label>Settings</NativeTabs.Trigger.Label>
       </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="news">
+        <NativeTabs.Trigger.Icon sf="newspaper.fill" md="article" />
+        <NativeTabs.Trigger.Label>News</NativeTabs.Trigger.Label>
+      </NativeTabs.Trigger>
     </NativeTabs>
   );
 }
