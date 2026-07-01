@@ -1,4 +1,5 @@
-import { Image, Linking, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Image } from 'expo-image';
+import { Linking, Pressable, StyleSheet, Text, View } from 'react-native';
 import { type RssItem } from '../../lib/rss-parser';
 
 function formatDate(dateStr: string): string {
