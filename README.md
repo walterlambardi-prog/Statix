@@ -1,56 +1,88 @@
-# Welcome to your Expo app 👋
+# Stratix
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+An [Expo](https://expo.dev) app built with Expo SDK 57, Expo Router, and React Native 0.86.
 
-## Get started
+## Requirements
 
-1. Install dependencies
+- Node.js 18+
+- Yarn 1.x
+- Xcode (for iOS)
+- Android Studio (for Android)
 
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+## Setup
 
 ```bash
-npm run reset-project
+yarn install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Development
 
-### Other setup steps
+```bash
+# Start the dev server
+yarn start
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+# Run on iOS simulator
+yarn ios
 
-## Learn more
+# Run on Android emulator
+yarn android
 
-To learn more about developing your project with Expo, look at the following resources:
+# Run on web
+yarn web
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Native builds
 
-## Join the community
+```bash
+# Generate native projects (android/ and ios/)
+yarn prebuild
 
-Join our community of developers creating universal apps.
+# Regenerate from scratch (cleans existing native folders)
+yarn prebuild:clean
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+# Platform-specific
+yarn prebuild:ios
+yarn prebuild:android
+```
+
+## Code quality
+
+```bash
+# Lint
+yarn lint
+
+# Format all files in src/
+yarn format
+
+# Check formatting without modifying files
+yarn format:check
+
+# TypeScript type check
+yarn type-check
+```
+
+Git hooks run automatically on every commit:
+
+- **pre-commit** — ESLint + Prettier on staged files via `lint-staged`
+- **commit-msg** — validates the message follows [Conventional Commits](https://www.conventionalcommits.org/)
+
+### Commit message format
+
+```
+<type>(scope): description
+
+Types: feat, fix, chore, docs, style, refactor, test, ci
+```
+
+## Tech stack
+
+|            |                                                            |
+| ---------- | ---------------------------------------------------------- |
+| Framework  | [Expo SDK 57](https://docs.expo.dev/versions/v57.0.0/)     |
+| Navigation | [Expo Router](https://docs.expo.dev/router/introduction/)  |
+| UI         | [@expo/ui](https://docs.expo.dev/versions/v57.0.0/sdk/ui/) |
+| Styling    | CSS Modules + global.css                                   |
+| Language   | TypeScript (strict)                                        |
+| Linting    | ESLint + eslint-config-expo                                |
+| Formatting | Prettier                                                   |
+| Git hooks  | Husky + lint-staged + commitlint                           |
