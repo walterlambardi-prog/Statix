@@ -1,24 +1,14 @@
 import { Screen } from '@/components/ui/screen';
-import { StyleSheet, Text, View } from 'react-native';
+import { Paragraph, YStack } from 'tamagui';
 
 export default function HomeScreen() {
   return (
     <Screen>
-      <View style={styles.content}>
-        <Text style={styles.body}>Welcome to Stratix</Text>
-      </View>
+      <YStack flex={1} style={{ alignItems: 'center', justifyContent: 'center', padding: 24 }}>
+        <Paragraph fontSize="$5" color="$muted" style={{ textAlign: 'center' }}>
+          Welcome to Stratix
+        </Paragraph>
+      </YStack>
     </Screen>
   );
 }
-
-const styles = StyleSheet.create({
-  content: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  body: {
-    fontSize: 16,
-    color: '#666',
-  },
-});

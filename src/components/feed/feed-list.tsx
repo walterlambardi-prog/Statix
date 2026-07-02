@@ -1,6 +1,7 @@
-import { Loader } from '@/components/ui/loader';
-import { FlatList, RefreshControl, StyleSheet, Text, View } from 'react-native';
+import { FlatList, RefreshControl } from 'react-native';
+import { Paragraph, Text, YStack } from 'tamagui';
 import { type RssItem } from '../../lib/rss-parser';
+import { Loader } from '../ui/loader';
 import { FeedCard } from './feed-card';
 
 interface FeedListProps {
@@ -17,53 +18,41 @@ export function FeedList({ items, loading, error, onRefresh }: FeedListProps) {
 
   if (error && items.length === 0) {
     return (
-      <View style={styles.center}>
-        <Text style={styles.errorText}>{error}</Text>
-        <Text style={styles.retryText} onPress={onRefresh}>
+      <YStack
+        flex={1}
+        bg="$background"
+        style={{ alignItems: 'center', justifyContent: 'center', padding: 24, gap: 12 }}>
+        <Paragraph fontSize="$4" color="$error" style={{ textAlign: 'center' }}>
+          {error}
+        </Paragraph>
+        <Text
+          fontSize="$4"
+          color="$primary"
+          fontWeight="600"
+          onPress={onRefresh}
+          pressStyle={{ opacity: 0.7 }}>
           Tap to retry
         </Text>
-      </View>
+      </YStack>
     );
   }
 
   return (
-    <FlatList
-      data={items}
-      keyExtractor={(item) => item.id}
-      renderItem={({ item, index }) => <FeedCard item={item} featured={index === 0} />}
-      refreshControl={
-        <RefreshControl refreshing={loading} onRefresh={onRefresh} tintColor="#208AEF" />
-      }
-      contentContainerStyle={items.length === 0 ? styles.center : styles.list}
-      ListEmptyComponent={<Text style={styles.emptyText}>No articles available</Text>}
-    />
+    <YStack flex={1} bg="$background">
+      <FlatList
+        data={items}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item, index }) => <FeedCard item={item} featured={index === 0} />}
+        refreshControl={<RefreshControl refreshing={loading} onRefresh={onRefresh} />}
+        contentContainerStyle={items.length === 0 ? { flex: 1 } : { paddingBottom: 16 }}
+        ListEmptyComponent={
+          <YStack flex={1} style={{ alignItems: 'center', justifyContent: 'center', padding: 24 }}>
+            <Text fontSize="$4" color="$muted">
+              No articles available
+            </Text>
+          </YStack>
+        }
+      />
+    </YStack>
   );
 }
-
-const styles = StyleSheet.create({
-  list: {
-    paddingBottom: 16,
-  },
-  center: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 24,
-  },
-  errorText: {
-    fontSize: 14,
-    color: '#e53935',
-    textAlign: 'center',
-    marginBottom: 8,
-  },
-  retryText: {
-    fontSize: 14,
-    color: '#208AEF',
-    fontWeight: '600',
-  },
-  emptyText: {
-    fontSize: 14,
-    color: '#999',
-    textAlign: 'center',
-  },
-});

@@ -1,22 +1,14 @@
-import { ActivityIndicator, StyleSheet, View } from 'react-native';
+import { ActivityIndicator } from 'react-native';
+import { YStack } from 'tamagui';
 
 interface LoaderProps {
   size?: 'small' | 'large';
-  color?: string;
 }
 
-export function Loader({ size = 'large', color = '#208AEF' }: LoaderProps) {
+export function Loader({ size = 'large' }: LoaderProps) {
   return (
-    <View style={styles.container}>
-      <ActivityIndicator size={size} color={color} />
-    </View>
+    <YStack flex={1} items="center" justify="center">
+      <ActivityIndicator size={size} color="$primary" />
+    </YStack>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

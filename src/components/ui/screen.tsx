@@ -1,5 +1,6 @@
-import { StyleSheet, type ViewStyle } from 'react-native';
+import { type ViewStyle } from 'react-native';
 import { SafeAreaView, type Edge } from 'react-native-safe-area-context';
+import { YStack } from 'tamagui';
 
 interface ScreenProps {
   children: React.ReactNode;
@@ -9,15 +10,10 @@ interface ScreenProps {
 
 export function Screen({ children, style, edges = ['left', 'right', 'bottom'] }: ScreenProps) {
   return (
-    <SafeAreaView style={[styles.safe, style]} edges={edges}>
-      {children}
-    </SafeAreaView>
+    <YStack flex={1} bg="$background">
+      <SafeAreaView style={[{ flex: 1, backgroundColor: 'transparent' }, style]} edges={edges}>
+        {children}
+      </SafeAreaView>
+    </YStack>
   );
 }
-
-const styles = StyleSheet.create({
-  safe: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-});

@@ -3,8 +3,10 @@ import { useCallback, useEffect, useState } from 'react';
 import { type RssItem, parseRssFeed } from '../lib/rss-parser';
 
 function resolveFeedUrl(url: string): string {
-  if (isWeb) return url;
-  return `/api/rss?url=${encodeURIComponent(url)}`;
+  // Web: browsers enforce CORS — proxy through the server-side API route.
+  // Native: no CORS restrictions, fetch the feed URL directly.
+  if (isWeb) return `/api/rss?url=${encodeURIComponent(url)}`;
+  return url;
 }
 
 interface UseFeedResult {
