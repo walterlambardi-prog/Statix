@@ -19,11 +19,6 @@
       "icon": "./assets/expo.icon",
       "bundleIdentifier": "com.walterlambardi.Stratix"
     },
-    "androidStatusBar": {
-      "backgroundColor": "#ffffff",
-      "barStyle": "dark-content",
-      "translucent": false
-    },
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
@@ -42,13 +37,22 @@
       "expo-router",
       "expo-updates",
       [
+        "expo-status-bar",
+        {
+          "style": "dark",
+          "backgroundColor": "#ffffff",
+          "translucent": false
+        }
+      ],
+      [
         "expo-splash-screen",
         {
           "backgroundColor": "#208AEF",
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 76
         }
-      ]
+      ],
+      "@react-native-vector-icons/ionicons"
     ],
     "experiments": {
       "typedRoutes": true,

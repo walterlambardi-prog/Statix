@@ -1,4 +1,5 @@
-import { ActivityIndicator, FlatList, RefreshControl, StyleSheet, Text, View } from 'react-native';
+import { Loader } from '@/components/ui/loader';
+import { FlatList, RefreshControl, StyleSheet, Text, View } from 'react-native';
 import { type RssItem } from '../../lib/rss-parser';
 import { FeedCard } from './feed-card';
 
@@ -11,11 +12,7 @@ interface FeedListProps {
 
 export function FeedList({ items, loading, error, onRefresh }: FeedListProps) {
   if (loading && items.length === 0) {
-    return (
-      <View style={styles.center}>
-        <ActivityIndicator size="large" color="#208AEF" />
-      </View>
-    );
+    return <Loader />;
   }
 
   if (error && items.length === 0) {

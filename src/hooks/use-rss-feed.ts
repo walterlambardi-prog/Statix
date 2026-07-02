@@ -1,9 +1,9 @@
+import { isWeb } from '@/lib/platform';
 import { useCallback, useEffect, useState } from 'react';
-import { Platform } from 'react-native';
 import { type RssItem, parseRssFeed } from '../lib/rss-parser';
 
 function resolveFeedUrl(url: string): string {
-  if (Platform.OS !== 'web') return url;
+  if (isWeb) return url;
   return `/api/rss?url=${encodeURIComponent(url)}`;
 }
 
